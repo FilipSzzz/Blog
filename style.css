@@ -5,32 +5,32 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Space Mono', monospace;
     color: #333;
-    background-color: #f9f9f9;
+    background-color: black;
 }
 
 header {
-    background-color: #f5f5f5;
-    padding: 20px;
+    background-color: #000000;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #e0e0e0;
     flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(27, 253, 0, 0.5);
+
 }
 .logo img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-}
-.przyciski {
-    display: flex;
+    width: 55px;
+    height: 55px;
 }
 .przyciski a {
     text-decoration: none;
-    color: #003aff;
+    color: #7100ff;
     padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #7100ff;
+    background: black;
 }
 .main {
     display: grid;
@@ -45,8 +45,10 @@ header {
     background-color: #000;
     border-radius: 10px;
     margin: 0 auto;
-    width: 70vw;
-    height: 70vh;
+    width: 80vw;
+    height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 10px rgba(27, 253, 0, 0.5);
 }
 .terminal_header{
     display: flex;
@@ -59,7 +61,21 @@ header {
     background: linear-gradient(gray, #333);
     height: 40px;
 }
-
+#output {
+    color: #7100ff;
+    font-family: monospace;
+    padding: 10px;
+    font-size: 16px;
+    white-space: pre-wrap;
+}
+#matrix-rain{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
 .buttons_terminal{
     display: flex;
     align-items: center;
@@ -98,7 +114,7 @@ header {
     background-color: #28c940;
 }
 .terminal_prompt{
-    padding: 10px;
+    padding: 3px;
     color: #777674;
 }
 .terminal_input{
@@ -140,15 +156,6 @@ header {
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 20px;
-    }
-
-    .item {
-        padding: 20px;
-    }
-
-    .zdjecia {
-        grid-template-columns: 1fr;
-        gap: 10px;
     }
 
     .footer {

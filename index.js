@@ -11,6 +11,7 @@ input.addEventListener('keydown', function(event) {
         input.value = '';
     }
 });
+
 function print(){
     output.innerHTML += '' +
         '$$$$$$$$\\ $$$$$$\\ $$\\       $$$$$$\\ $$$$$$$\\         $$$$$$\\  $$$$$$$$\\ $$\\        $$$$$$\\   $$$$$$\\   $$$$$$\\  $$\\      $$\\  $$$$$$\\  $$\\   $$\\ $$$$$$\\ \n' +
@@ -45,9 +46,7 @@ function handleCommand(cmd) {
         output.innerHTML += 'Nieznana komenda: ' + cmd + '<br>';
     }
 }
-function animatedBackground() {
 
-}
 githubButton.addEventListener('click', function (event) {
     event.preventDefault();
     goToGithub();
@@ -87,3 +86,6 @@ function draw() {
     }
 }
 setInterval(draw, 33);
+
+
+

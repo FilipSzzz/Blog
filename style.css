@@ -32,6 +32,10 @@ header {
     border: 1px solid #7100ff;
     background: black;
 }
+.przyciski a:hover {
+    background-color: #7100ff;
+    color: #000000;
+}
 .main {
     display: grid;
     justify-content: center;

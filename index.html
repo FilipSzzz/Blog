@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PJATK</title>
+    <title>Filip Szlagowski CyberBlog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
-</head>
+    <script type="module" src="js/app.js"></script></head>
 <body>
 <canvas id="matrix-rain"></canvas>
 <header class="header">
@@ -45,6 +44,19 @@
                 </div>
             </section>
         </div>
+    </div>
+    <div class="password_checker">
+        <h2>Password Strength Checker</h2>
+        <div class="password_input">
+            <input type="password" id="password-input" placeholder="Enter your password">
+            <button id="random-password">Random Password</button>
+        </div>
+        <ul id="password_requirements">
+            <li id="length">At least 13 characters</li>
+            <li id="number">At least three numbers</li>
+            <li id="special">At least two special characters</li>
+            <li id="uppercase">At least two uppercase letters</li>
+        </ul>
     </div>
 
 </main>

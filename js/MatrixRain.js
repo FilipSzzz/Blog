@@ -1,40 +1,55 @@
-// var canvas = document.querySelector('canvas'),
-//     ctx = canvas.getContext('2d');
-//
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
-// var letters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-// letters = letters.split('');
-// var fontSize = 10,
-//     columns = canvas.width / fontSize;
-//
-// var drops = [];
-// for (var i = 0; i < columns; i++) {
-//     drops[i] = 1;
-// }
-// function draw() {
-//     ctx.fillStyle = 'rgba(0, 0, 0, .1)';
-//     ctx.fillRect(0, 0, canvas.width, canvas.height);
-//     for (var i = 0; i < drops.length; i++) {
-//         var text = letters[Math.floor(Math.random() * letters.length)];
-//         ctx.fillStyle = '#0f0';
-//         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-//         drops[i]++;
-//         if (drops[i] * fontSize > canvas.height && Math.random() > .95) {
-//             drops[i] = 0;
-//         }
-//     }
-// }
-// setInterval(draw, 33);
-//
-// export default class MatrixRain {
-//     constructor() {
-//
-//     }
-//     // var letters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-//
-//
-//     draw(){
-//         for
-//     }
-// }
+export default class MatrixRain {
+    constructor(canvas = 'matrix-rain') {
+        this.canvas = document.querySelector(`#${canvas}`);
+        this.font = 14;
+
+        this.ctx = this.canvas.getContext('2d');
+        this.letters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピ' +
+            'ウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾド' +
+            'ボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+    }
+    rainDrops = [];
+    resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+
+        this.width = this.canvas.width;
+        this.height = this.canvas.height;
+
+        this.colums = Math.floor(this.canvas.width / this.font);
+
+        this.rainDrops = [];
+        for (let i = 0; i < this.colums; i++) {
+            this.rainDrops[i] = 1;
+        }
+    }
+
+    draw = () => {
+        const context = this.ctx;
+        const canvas = this.canvas;
+
+        context.fillStyle = 'rgba(0, 0, 0, 0.1)';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        context.fillStyle = '#0f0';
+        context.font = `${this.font}px monospace`;
+
+        for (let i = 0; i < this.rainDrops.length; i++) {
+            const text = this.letters.charAt(Math.floor(Math.random() * this.letters.length));
+            context.fillText(text, i * this.font, this.rainDrops[i] * this.font);
+
+            if (this.rainDrops[i] * this.font > canvas.height && Math.random() > 0.975) {
+                this.rainDrops[i] = 0;
+            }
+            this.rainDrops[i]++;
+        }
+    }
+
+    start(){
+        if (this.interval) return;
+        this.interval = setInterval(this.draw, 33);
+    }
+}

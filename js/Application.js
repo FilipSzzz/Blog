@@ -15,18 +15,20 @@ class Application {
         this.matrixRain.start();
     }
     goGithub(){
-        this.github?.addEventListener('click', () =>
+        this.github.addEventListener('click', () =>
             window.open('https://github.com/FilipSzzz', '_blank')
         );
     }
-    goLinkedin(){
-        this.linkedin?.addEventListener('click', () =>
+    goLinkedin() {
+        this.linkedin.addEventListener('click', () =>
             window.open('https://www.linkedin.com/in/filip-szlagowski-41a5b2319/', '_blank')
         );
     }
-
 }
 document.addEventListener('DOMContentLoaded', () => {
     const app = new Application(document);
     app.init();
+
 });
+
+

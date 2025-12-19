@@ -15,13 +15,24 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 }
 .logo img {
     width: 55px;
     height: 55px;
 }
-.przyciski button {
+#date{
+    color: #7100ff;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.buttonsHeader {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.buttonsHeader button {
     text-decoration: none;
     color: #7100ff;
     padding: 10px 15px;
@@ -29,7 +40,7 @@ header {
     border: 1px solid #7100ff;
     background: black;
 }
-.przyciski button:hover {
+.buttonsHeader button:hover {
     background-color: #7100ff;
     color: #000000;
 }
@@ -207,12 +218,12 @@ header {
         padding: 20px;
     }
 
-    .przyciski {
+    .buttonsHeader {
         flex-direction: column;
         width: 100%;
     }
 
-    .przyciski a {
+    .buttonsHeader a {
         border-bottom: 1px solid #e0e0e0;
         font-size: 14px;
     }

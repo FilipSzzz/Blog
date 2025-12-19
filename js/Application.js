@@ -1,19 +1,28 @@
 import Terminal from './Terminal.js';
 import MatrixRain from './MatrixRain.js';
-// DO ZAIMPLEMENTOWANIA CONTACT PRZYCISK
+import Clock from "./Clock.js";
+import APIs from "./API.js";
 
 class Application {
     constructor(documentRef) {
         this.document = documentRef;
+        this.clock = new Clock();
         this.github = this.document.querySelector('#github');
         this.linkedin = this.document.querySelector('#linkedin');
+        this.terminal = null;
         this.matrixRain = new MatrixRain('matrix-rain');
+        this.crypto = new APIs();
     }
-    init(){
+    async init(){
         this.goGithub();
         this.goLinkedin();
         this.matrixRain.start();
+        this.terminal = new Terminal('#terminalInput', '#output');
+        this.clock.showTime();
+        setInterval(() => this.clock.showTime(), 1000);
+
     }
+
     goGithub(){
         this.github.addEventListener('click', () =>
             window.open('https://github.com/FilipSzzz', '_blank')

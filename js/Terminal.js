@@ -1,8 +1,8 @@
 export default class Terminal {
-    constructor(input, output) {
+    constructor(input, output, api) {
         this.input = document.querySelector(input);
         this.output = document.querySelector(output);
-
+        this.api = api;
         if (this.input) {
             this.input.addEventListener('keydown', (e) => this.handleInput(e));
         }
@@ -20,18 +20,37 @@ export default class Terminal {
         }
     }
     handleCommand(command) {
-        if (command.toLowerCase() === 'clear'){
+        const trimmedCommand = command.trim();
+        if (trimmedCommand === '') return;
+
+        const parts = trimmedCommand.split(/\s+/);
+        const mainCommand = parts[0].toLowerCase();
+        const flags = parts[1] ? parts[1].toUpperCase() : null;
+
+        if (mainCommand === 'clear') {
             this.output.innerHTML = '';
-        } else if (command.toLowerCase() === 'help'){
-            this.output.innerHTML += 'Dostępne komendy: <br>';
-        } else if (command.toLowerCase() === 'ls'){
+        } else if (mainCommand === 'help') {
+            this.output.innerHTML += 'Dostępne komendy: clear, help, ls, crypto<br>';
+        } else if (mainCommand === 'ls') {
             this.output.innerHTML += 'github linkedin offer contact<br>';
-        }else if (command.toLowerCase() === "crypto"){
-            this.output.innerHTML += 'BTC ETH XRP DODGE USDT BNB USDC SOL TRX ADA <br>';
-        }
-        else if (command.toLowerCase() === '') {
+        } else if (mainCommand === "crypto") {
+            const availableMap = this.api.checkingIfCryptoExists();
+            if (flags === null) {
+                this.output.innerHTML += `${Object.keys(availableMap).join(' ')} <br>`;
+                this.output.innerHTML += 'WPISZ: crypto [nazwa krypto] aby sprawdzić cenę.<br>';
+            } else {
+                if (flags in availableMap) {
+                    this.output.innerHTML += `Pobieranie danych dla ${availableMap[flags]}...<br>`;
+                    api.getCrypto(flags).then(data => {
+                        const response =  fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd`);
+
+                    })
+                } else {
+                    this.output.innerHTML += `Nieobsługiwana kryptowaluta: ${flags}<br>`;
+                }
+            }
         } else {
-            this.output.innerHTML += `Nieznana komenda: ${command}<br>`;
+            this.output.innerHTML += `Nieznana komenda: ${mainCommand}<br>`;
         }
     }
     printInitialMessage(){

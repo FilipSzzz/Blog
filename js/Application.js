@@ -1,7 +1,8 @@
 import Terminal from './Terminal.js';
 import MatrixRain from './MatrixRain.js';
 import Clock from "./Clock.js";
-import APIs from "./API.js";
+import CryptoAPI from "./CryptoAPI.js";
+import Slider from "./Slider.js"; // Import Slider
 
 class Application {
     constructor(documentRef) {
@@ -11,13 +12,14 @@ class Application {
         this.linkedin = this.document.querySelector('#linkedin');
         this.terminal = null;
         this.matrixRain = new MatrixRain('matrix-rain');
-        this.crypto = new APIs();
+        this.crypto = new CryptoAPI();
+        this.passwordLengthSlider = new Slider();
     }
     async init(){
         this.goGithub();
         this.goLinkedin();
         this.matrixRain.start();
-        this.terminal = new Terminal('#terminalInput', '#output');
+        this.terminal = new Terminal('#terminalInput', '#output',this.crypto);
         this.clock.showTime();
         setInterval(() => this.clock.showTime(), 1000);
 

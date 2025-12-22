@@ -29,6 +29,20 @@ export default class Terminal {
 
         if (mainCommand === 'clear') {
             this.output.innerHTML = '';
+        }else if (mainCommand === 'linkedin'){
+            this.output.innerHTML += '<a href="https://www.linkedin.com/in/filip-szlagowski-41a5b2319/" target="_blank" class="terminal_link">https://www.linkedin.com/in/filip-szlagowski-41a5b2319/</a> <br>'
+        }else if (mainCommand === 'about'){
+            this.output.innerHTML += 'Jestem studentem informatyki na PJATK, pasjonuję się cyberbezpieczeństwem oraz Formułą 1.' +
+                '<br>W wolnych chwilach lubię rozwiązywać CTFy oraz pisać w pythonie i javie.<br>';
+        }
+        else if (mainCommand === 'skills'){
+            this.output.innerHTML += 'Java + Spring Boot, Python, MongoDB, MySQL, Git <br>'
+        }
+        else if (mainCommand === 'github'){
+            this.output.innerHTML += '<a href="https://github.com/FilipSzzz" target="_blank" class="terminal_link">https://github.com/FilipSzzz</a> <br>'
+        }
+        else if (mainCommand === 'contact'){
+            this.output.innerHTML += '<a href="https://www.linkedin.com/in/filip-szlagowski-41a5b2319/" target="_blank" class="terminal_link">https://www.linkedin.com/in/filip-szlagowski-41a5b2319/</a> </br>'
         } else if (mainCommand === 'help') {
             this.output.innerHTML += 'Dostępne komendy: clear, help, ls, crypto<br>';
         } else if (mainCommand === 'ls') {
@@ -36,7 +50,6 @@ export default class Terminal {
         } else if (mainCommand === "crypto") {
             const availableMap = this.api.checkingIfCryptoExists();
             if (flags === null) {
-                this.output.innerHTML += `${Object.keys(availableMap).join(' ')} <br>`;
                 this.output.innerHTML += 'WPISZ: crypto [nazwa krypto] aby sprawdzić cenę.<br>';
             } else {
                 if (flags in availableMap) {
@@ -55,9 +68,12 @@ export default class Terminal {
     }
     printInitialMessage(){
         this.printASCII();
-        // this.output.innerHTML += 'Witaj na mojej stronie!<br>';
-        // this.output.innerHTML += 'Jestem studentem informatyki na PJATK<br>';
-        // this.output.innerHTML += 'Moje zainteresowania to: '
+        this.output.innerHTML += 'Witaj na mojej stronie!<br>';
+        this.output.innerHTML += 'Jestem studentem informatyki na PJATK<br>';
+        this.output.innerHTML += 'Pasjonuję się cyberbezpieczeństwem oraz Formułą 1.<br>'
+        this.output.innerHTML += 'W wolnych chwilach lubię rozwiązywać CTFy oraz pisać w pythonie i javie.<br>'
+
+
     }
     printASCII() {
         this.output.innerHTML += `

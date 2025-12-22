@@ -86,7 +86,6 @@ header {
 #output{
     color: #41e348;
     font-size: 16px;
-
 }
 
 #matrix-rain{
@@ -134,6 +133,9 @@ header {
 }
 .terminal_prompt{
     color: #777674;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
 }
 .terminal_input{
     background: transparent;
@@ -142,6 +144,14 @@ header {
     outline: none;
     flex: 1;
     font-size: 16px;
+}
+.terminal_link{
+    color: #41e348;
+    text-decoration: none;
+    cursor: pointer;
+}
+.terminal_link:hover{
+    text-decoration: underline;
 }
 .password_checker {
     display: grid;

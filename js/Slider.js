@@ -9,4 +9,5 @@ export default class Slider {
     updateValue() {
         this.valueElement.textContent = this.slider.value;
     }
+
 }

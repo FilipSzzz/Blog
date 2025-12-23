@@ -65,14 +65,17 @@
         </div>
         <div class="generator_section">
             <h2>Password Generator</h2>
-            <button id="random_password">Random Password</button>
             <div class="slider_container">
+                <div class="generated_password_container">
+                    <input type="text" id="password_generator_output" readonly>
+                    <button id="copy_password" type="button">Copy</button>
+                </div>
                 <input type="range" id="slider" name="slider" min="8" max="32" value="16">
                 <label for="slider">Length: <span id="password_length_value"></span></label>
-                <div class="generated_password_container">
-                    <input type="text" ><span id="generated_password"></span>
-                </div>
+
             </div>
+            <button id="random_password">Random Password</button>
+
         </div>
     </div>
 

@@ -13,7 +13,7 @@ export default class Terminal {
         if (event.key === 'Enter') {
             event.preventDefault();
             const command = this.input.value.trim();
-            this.output.innerHTML += `<span style="color: #777674;">fszlagowski@terminal: </span>${command}<br>`;
+            this.output.innerHTML += `<span style="color: #777674;">fszlagowski@terminal: </span> ${command}<br>`;
             this.handleCommand(command);
             this.input.value = '';
             this.output.parentElement.scrollTop = this.output.parentElement.scrollHeight;
@@ -44,7 +44,7 @@ export default class Terminal {
         else if (mainCommand === 'contact'){
             this.output.innerHTML += '<a href="https://www.linkedin.com/in/filip-szlagowski-41a5b2319/" target="_blank" class="terminal_link">https://www.linkedin.com/in/filip-szlagowski-41a5b2319/</a> </br>'
         } else if (mainCommand === 'help') {
-            this.output.innerHTML += 'Dostępne komendy: clear, help, ls, crypto<br>';
+            this.output.innerHTML += 'Dostępne komendy: about, skills, github, linkedin, contact, clear, help, ls, crypto<br>';
         } else if (mainCommand === 'ls') {
             this.output.innerHTML += 'github linkedin offer contact<br>';
         } else if (mainCommand === "crypto") {

@@ -86,6 +86,9 @@ header {
 #output{
     color: #41e348;
     font-size: 16px;
+    font-family: 'Space Mono', monospace;
+    padding: 0;
+    margin: 0;
 }
 
 #matrix-rain{
@@ -136,14 +139,19 @@ header {
     font-size: 16px;
     display: flex;
     align-items: center;
+    margin: 0;
+    padding: 0;
 }
 .terminal_input{
+    font-family: 'Space Mono', monospace;
     background: transparent;
     border: none;
     color: #41e348;
     outline: none;
     flex: 1;
     font-size: 16px;
+    padding: 10px;
+    margin: 0;
 }
 .terminal_link{
     color: #41e348;
@@ -166,6 +174,7 @@ header {
     border-radius: 20px;
     box-shadow: 0 0 10px rgba(27, 253, 0, 0.5);
 }
+
 .checker_section, .generator_section {
     display: flex;
     flex-direction: column;
@@ -174,15 +183,31 @@ header {
 
 #password_input {
     background: transparent;
+    box-sizing: border-box;
     border: 1px solid #41e348;
     border-radius: 5px;
+    width: 100%;
     color: #41e348;
     font-size: 16px;
     outline: none;
     padding: 10px;
 }
-
+.generated_password_container{
+    display: flex;
+    gap: 10px;
+}
 #random_password {
+    background-color: #41e348;
+    border: 1px solid #41e348;
+    border-radius: 1px;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+#copy_password{
+    display: grid;
     background-color: #41e348;
     border: none;
     border-radius: 5px;
@@ -191,10 +216,7 @@ header {
     font-size: 16px;
     transition: background-color 0.3s ease;
 }
-#password_input, #random_password {
-    width: 100%;
-    box-sizing: border-box;
-}
+
 .slider_container {
     display: flex;
     flex-direction: column;
@@ -223,7 +245,16 @@ header {
 .password_checker_result{
     color: #41e348;
 }
-
+#password_generator_output{
+    background: transparent;
+    width: 100%;
+    border: 1px solid #41e348;
+    border-radius: 5px;
+    color: #41e348;
+    font-size: 16px;
+    outline: none;
+    padding: 10px;
+}
 .footer {
     background-color: #000;
     color: #fff;

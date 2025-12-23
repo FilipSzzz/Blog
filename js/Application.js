@@ -2,7 +2,8 @@ import Terminal from './Terminal.js';
 import MatrixRain from './MatrixRain.js';
 import Clock from "./Clock.js";
 import CryptoAPI from "./CryptoAPI.js";
-import Slider from "./Slider.js"; // Import Slider
+import Slider from "./Slider.js";
+import PasswordGenerator from "./PasswordGenerator.js"; // Import Slider
 
 class Application {
     constructor(documentRef) {
@@ -21,7 +22,31 @@ class Application {
         this.matrixRain.start();
         this.terminal = new Terminal('#terminalInput', '#output',this.crypto);
         this.clock.showTime();
+        this.setupPasswordGenerator();
         setInterval(() => this.clock.showTime(), 1000);
+    }
+
+    setupPasswordGenerator() {
+        const generateButton = this.document.querySelector('#random_password');
+        const passwordOutput = this.document.querySelector('#password_generator_output');
+        const lengthSlider = this.document.querySelector('#slider');
+        const copyPassw = this.document.querySelector('#copy_password');
+        generateButton.addEventListener('click', () => {
+            const passwordLength = lengthSlider.value;
+            const generator = new PasswordGenerator(passwordLength);
+            passwordOutput.value = generator.generatePassword();
+        });
+        copyPassw.addEventListener('click' ,() => {
+            if(passwordOutput.value){
+                navigator.clipboard.writeText(passwordOutput.value).then(r =>
+                    copyPassw.textContent = "Copied!",
+                    setTimeout(() => {
+                    copyPassw.textContent = 'Copy';
+                    }, 1000)
+                );
+
+            }
+        });
 
     }
 

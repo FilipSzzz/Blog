@@ -33,7 +33,7 @@ export default class Terminal {
             this.output.innerHTML += '<a href="https://www.linkedin.com/in/filip-szlagowski-41a5b2319/" target="_blank" class="terminal_link">https://www.linkedin.com/in/filip-szlagowski-41a5b2319/</a> <br>'
         }else if (mainCommand === 'about'){
             this.output.innerHTML += 'Jestem studentem informatyki na PJATK, pasjonuję się cyberbezpieczeństwem oraz Formułą 1.' +
-                '<br>W wolnych chwilach lubię rozwiązywać CTFy oraz pisać w pythonie i javie.<br>';
+                '<br>W wolnych chwilach lubię rozwiązywać CTFy.<br>';
         }
         else if (mainCommand === 'skills'){
             this.output.innerHTML += 'Java + Spring Boot, Python, MongoDB, MySQL, Git <br>'
@@ -48,16 +48,23 @@ export default class Terminal {
         } else if (mainCommand === 'ls') {
             this.output.innerHTML += 'github linkedin offer contact<br>';
         } else if (mainCommand === "crypto") {
-            const availableMap = this.api.checkingIfCryptoExists();
+            const availableCrypto = this.api.checkingIfCryptoExists();
             if (flags === null) {
-                this.output.innerHTML += 'WPISZ: crypto [nazwa krypto] aby sprawdzić cenę.<br>';
+                this.output.innerHTML += 'WPISZ: crypto [symbol] (np. crypto BTC) aby sprawdzić cenę.<br>';
             } else {
-                if (flags in availableMap) {
-                    this.output.innerHTML += `Pobieranie danych dla ${availableMap[flags]}...<br>`;
-                    api.getCrypto(flags).then(data => {
-                        const response =  fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${crypto}&vs_currencies=usd`);
-
-                    })
+                if (flags in availableCrypto) {
+                    const cryptoId = availableCrypto[flags];
+                    this.output.innerHTML += `Pobieranie danych dla ${flags}...<br>`;
+                    
+                    this.api.getCrypto(cryptoId).then(data => {
+                        if (data && data[cryptoId]) {
+                            const price = data[cryptoId].usd;
+                            this.output.innerHTML += `<span style="color: #28c940;">Aktualna cena ${flags}: $${price}</span><br>`;
+                        } else {
+                            this.output.innerHTML += 'Nie udało się pobrać ceny.<br>';
+                        }
+                        this.output.parentElement.scrollTop = this.output.parentElement.scrollHeight;
+                    });
                 } else {
                     this.output.innerHTML += `Nieobsługiwana kryptowaluta: ${flags}<br>`;
                 }
@@ -71,7 +78,7 @@ export default class Terminal {
         this.output.innerHTML += 'Witaj na mojej stronie!<br>';
         this.output.innerHTML += 'Jestem studentem informatyki na PJATK<br>';
         this.output.innerHTML += 'Pasjonuję się cyberbezpieczeństwem oraz Formułą 1.<br>'
-        this.output.innerHTML += 'W wolnych chwilach lubię rozwiązywać CTFy oraz pisać w pythonie i javie.<br>'
+        this.output.innerHTML += 'W wolnych chwilach lubię rozwiązywać CTFy.<br>'
 
 
     }

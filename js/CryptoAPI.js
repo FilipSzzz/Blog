@@ -12,17 +12,16 @@ export default class CryptoAPI {
     }
     checkingIfCryptoExists() {
         return {
-            'BTC': 'Bitcoin',
-            'ETH': 'Ethereum',
-            'XRP': 'Ripple',
-            'DODGE': 'Dogecoin',
-            'USDT': 'Tether',
-            'BNB': 'Binance Coin',
-            'USDC': 'USD Coin',
-            'SOL': 'Solana',
-            'TRX': 'TRON',
-            'ADA': 'Cardano'
+            'BTC': 'bitcoin',
+            'ETH': 'ethereum',
+            'XRP': 'ripple',
+            'DOGE': 'dogecoin',
+            'USDT': 'tether',
+            'BNB': 'binancecoin',
+            'USDC': 'usd-coin',
+            'SOL': 'solana',
+            'TRX': 'tron',
+            'ADA': 'cardano'
         };
     }
-
 }

@@ -30,24 +30,28 @@ class Application {
         const generateButton = this.document.querySelector('#random_password');
         const passwordOutput = this.document.querySelector('#password_generator_output');
         const lengthSlider = this.document.querySelector('#slider');
-        const copyPassw = this.document.querySelector('#copy_password');
+        const copyPassword = this.document.querySelector('#copy_password');
         generateButton.addEventListener('click', () => {
             const passwordLength = lengthSlider.value;
             const generator = new PasswordGenerator(passwordLength);
             passwordOutput.value = generator.generatePassword();
         });
-        copyPassw.addEventListener('click' ,() => {
+        copyPassword.addEventListener('click' ,() => {
             if(passwordOutput.value){
                 navigator.clipboard.writeText(passwordOutput.value).then(r =>
-                    copyPassw.textContent = "Copied!",
+                    copyPassword.textContent = "Copied!",
                     setTimeout(() => {
-                    copyPassw.textContent = 'Copy';
+                    copyPassword.textContent = 'Copy';
                     }, 1000)
                 );
 
             }
         });
 
+    }
+    setupPasswordChecker(){
+        const passwordCheckerInput = this.document.querySelector('#password-input');
+        
     }
 
     goGithub(){

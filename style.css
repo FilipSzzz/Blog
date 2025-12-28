@@ -305,6 +305,19 @@ header {
         display: flex;
         flex-direction: column;
     }
+    #output, .terminal_prompt, .terminal_input{
+        font-size: 13px;
+    }
+    .password_checker h2 {
+        font-size: 18px;
+    }
+
+    #password_requirements li, .status_text, #password_input, #password_generator_output {
+        font-size: 13px;
+    }
+    .terminal_input{
+        padding: 5px;
+    }
     .terminal{
         width: 90vw;
         height: 70vh;
@@ -313,6 +326,7 @@ header {
     .password_checker {
         grid-template-columns: 1fr;
         width: 90vw;
+        gap: 2px;
     }
     .footer {
         padding: 20px;

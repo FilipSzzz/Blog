@@ -204,7 +204,7 @@ header {
 .checker_section, .generator_section {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 5px;
 }
 
 #password_input {

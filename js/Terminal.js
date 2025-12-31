@@ -22,7 +22,6 @@ export default class Terminal {
     handleCommand(command) {
         const trimmedCommand = command.trim();
         if (trimmedCommand === '') return;
-
         const parts = trimmedCommand.split(/\s+/);
         const mainCommand = parts[0].toLowerCase();
         const flags = parts[1] ? parts[1].toUpperCase() : null;

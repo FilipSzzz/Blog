@@ -26,11 +26,5 @@ export default class PasswordGenerator {
         }
         return password;
     }
-    copyPasswordToClipboard(){
-        const copyText = document.getElementById("copy_password");
-        copyText.select();
-        copyText.setSelectionRange(0, 99999);
-        navigator.clipboard.writeText(copyText.value);
-        alert("Copied the text: " + copyText.value);
-    }
+
 }

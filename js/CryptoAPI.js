@@ -6,7 +6,7 @@ export default class CryptoAPI {
             const data = await response.json();
             return data;
         } catch (error) {
-            console.error("Błąd pobierania cen krypto:", error);
+            console.error("Błąd pobierania cen crypto:", error);
             return null;
         }
     }

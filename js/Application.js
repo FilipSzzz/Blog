@@ -3,8 +3,8 @@ import MatrixRain from './MatrixRain.js';
 import Clock from "./Clock.js";
 import CryptoAPI from "./CryptoAPI.js";
 import Slider from "./Slider.js";
-import PasswordGenerator from "./PasswordGenerator.js"; // Import Slider
-
+import PasswordGenerator from "./PasswordGenerator.js";
+import PasswordChecker from "./PasswordChecker.js";
 class Application {
     constructor(documentRef) {
         this.document = documentRef;
@@ -15,6 +15,7 @@ class Application {
         this.matrixRain = new MatrixRain('matrix-rain');
         this.crypto = new CryptoAPI();
         this.passwordLengthSlider = new Slider();
+        this.passwordChecker = new PasswordChecker();
     }
     async init(){
         this.goGithub();
@@ -23,7 +24,9 @@ class Application {
         this.terminal = new Terminal('#terminalInput', '#output',this.crypto);
         this.clock.showTime();
         this.setupPasswordGenerator();
+        this.setupPasswordChecker();
         setInterval(() => this.clock.showTime(), 1000);
+
     }
 
     setupPasswordGenerator() {
@@ -50,13 +53,16 @@ class Application {
 
     }
     setupPasswordChecker(){
-        const passwordCheckerInput = this.document.querySelector('#password-input');
-        
+        const passwordCheckerInput = this.document.querySelector('#password_input');
+        passwordCheckerInput.addEventListener('input', () => {
+            this.passwordChecker.checkPasswordStrength();
+        })
     }
 
     goGithub(){
         this.github.addEventListener('click', () =>
             window.open('https://github.com/FilipSzzz', '_blank')
+
         );
     }
     goLinkedin() {

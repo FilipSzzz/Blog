@@ -26,13 +26,15 @@ export default class Terminal {
         const mainCommand = parts[0].toLowerCase();
         const flags = parts[1] ? parts[1].toUpperCase() : null;
 
+
         if (mainCommand === 'clear') {
             this.output.innerHTML = '';
         }else if (mainCommand === 'linkedin'){
             this.output.innerHTML += '<a href="https://www.linkedin.com/in/filip-szlagowski-41a5b2319/" target="_blank" class="terminal_link">https://www.linkedin.com/in/filip-szlagowski-41a5b2319/</a> <br>'
         }else if (mainCommand === 'about'){
-            this.output.innerHTML += 'Jestem studentem informatyki na PJATK, pasjonuję się cyberbezpieczeństwem oraz Formułą 1.' +
-                '<br>W wolnych chwilach lubię rozwiązywać CTFy.<br>';
+            this.output.innerHTML += 'Student informatyki na PJATK<br>';
+            this.output.innerHTML += 'Pasjonuję się cyberbezpieczeństwem, programowaniem oraz Formułą 1.<br>'
+            this.output.innerHTML += 'W wolnych chwilach lubię rozwiązywać CTFy.<br>'
         }
         else if (mainCommand === 'skills'){
             this.output.innerHTML += 'Java + Spring Boot, Python, MongoDB, MySQL, Git <br>'
@@ -43,9 +45,22 @@ export default class Terminal {
         else if (mainCommand === 'contact'){
             this.output.innerHTML += '<a href="https://www.linkedin.com/in/filip-szlagowski-41a5b2319/" target="_blank" class="terminal_link">https://www.linkedin.com/in/filip-szlagowski-41a5b2319/</a> </br>'
         } else if (mainCommand === 'help') {
-            this.output.innerHTML += 'Dostępne komendy: about, skills, github, linkedin, contact, clear, help, ls, crypto<br>';
+            this.output.innerHTML += `
+                <div style="margin: 10px 0;">
+                    <span style="color: #28c940; font-weight: bold;">Dostępne komendy:</span><br>
+                    <div style="display: grid; grid-template-columns: 100px auto; margin-top: 5px;">
+                        <span>about</span>    <span>- informacje o autorze</span>
+                        <span>skills</span>   <span>- lista technologii i umiejętności</span>
+                        <span>github</span>   <span>- link do profilu GitHub</span>
+                        <span>linkedin</span> <span>- link do profilu LinkedIn</span>
+                        <span>contact</span>  <span>- informacje kontaktowe</span>
+                        <span>ls</span>       <span>- listuje dostępne sekcje</span>
+                        <span>crypto</span>   <span>- sprawdza kursy (np. crypto BTC)</span>
+                        <span>clear</span>    <span>- czyści ekran terminala</span><br>
+                    </div>
+                </div>`;
         } else if (mainCommand === 'ls') {
-            this.output.innerHTML += 'github linkedin offer contact<br>';
+            this.output.innerHTML += 'github linkedin contact<br>';
         } else if (mainCommand === "crypto") {
             const availableCrypto = this.api.checkingIfCryptoExists();
             if (flags === null) {
@@ -76,8 +91,9 @@ export default class Terminal {
         this.printASCII();
         this.output.innerHTML += 'Witaj na mojej stronie!<br>';
         this.output.innerHTML += 'Jestem studentem informatyki na PJATK<br>';
-        this.output.innerHTML += 'Pasjonuję się cyberbezpieczeństwem oraz Formułą 1.<br>'
+        this.output.innerHTML += 'Pasjonuję się cyberbezpieczeństwem, programowaniem oraz Formułą 1.<br>'
         this.output.innerHTML += 'W wolnych chwilach lubię rozwiązywać CTFy.<br>'
+        this.output.innerHTML += '<br><span style="color: #7100ff;">Wpisz komendę help by poznać wszystkie dostepne komendy</span><br>';
 
 
     }

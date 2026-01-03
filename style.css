@@ -318,7 +318,7 @@ header {
         font-size: 18px;
     }
 
-    #password_requirements li, .status_text, #password_input, #password_generator_output {
+    #password_requirements li, #password_input, #password_generator_output {
         font-size: 13px;
     }
     .terminal_input{

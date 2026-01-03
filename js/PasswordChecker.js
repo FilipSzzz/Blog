@@ -14,7 +14,7 @@ export default class PasswordChecker {
         } else {
             this.lengthRequirement.classList.remove('valid');
         }
-let numberOfNumbers = 0;
+        let numberOfNumbers = 0;
         let numberOfSpecialChars = 0;
         let numberOfUppercaseLetters = 0;
 

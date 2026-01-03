@@ -11,7 +11,6 @@ class Application {
         this.clock = new Clock();
         this.github = this.document.querySelector('#github');
         this.linkedin = this.document.querySelector('#linkedin');
-        this.terminal = null;
         this.matrixRain = new MatrixRain('matrix-rain');
         this.crypto = new CryptoAPI();
         this.passwordLengthSlider = new Slider();
